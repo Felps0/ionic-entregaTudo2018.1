@@ -6,6 +6,10 @@
 
 <ion-content>
   <form #fc="ngForm" (ngSubmit)="onsubmit(fc)">
+    <ion-item lines="none">
+          <img src="assets/perfil.jpg" (click)="tirarFoto()" *ngIf="!preview">
+          <img [src]="preview" (click)="tirarFoto()" *ngIf="preview">
+    </ion-item>
     <ion-item>
       <ion-label position="floating">Produto</ion-label>
       <ion-input type="text" [(ngModel)]="entrega.produto" name="produto" required></ion-input>

@@ -60,4 +60,5 @@ export class ListEntregaPage implements OnInit {
 
     await alert.present();
   }
+  
 }

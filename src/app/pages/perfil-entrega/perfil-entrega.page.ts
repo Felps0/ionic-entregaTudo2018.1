@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 @Component({
   selector: 'app-perfil-entrega',
   templateUrl: './perfil-entrega.page.html',

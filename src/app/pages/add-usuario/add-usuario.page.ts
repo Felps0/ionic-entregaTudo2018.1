@@ -5,7 +5,7 @@ import { AlertController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-
+ 
 @Component({
   selector: 'app-add-usuario',
   templateUrl: './add-usuario.page.html',
