@@ -40,7 +40,7 @@ export class ListEntregaPage implements OnInit {
   async remover(key) {
     const alert = await this.alertController.create({
       header: 'Apagar!',
-      message: 'Deseja apagar pdados definitivamente?',
+      message: 'Deseja apagar dados definitivamente?',
       buttons: [
         {
           text: 'Não',
@@ -60,5 +60,4 @@ export class ListEntregaPage implements OnInit {
 
     await alert.present();
   }
-  
 }
