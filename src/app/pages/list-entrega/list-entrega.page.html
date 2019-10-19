@@ -7,6 +7,7 @@
 </ion-header>
 
 <ion-content>
+  
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="danger" routerLink="/tabs/addEntrega">
       <ion-icon name="add"></ion-icon>
@@ -15,6 +16,7 @@
 
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
+    
   </ion-refresher>
 
   <ion-list *ngIf="entregas | async as entrs">
@@ -25,7 +27,7 @@
         </ion-item-option>
       </ion-item-options>
 
-      <ion-item [routerLink]="['/tabs/perfilEntrega/',e.key]">
+      <ion-item routerLink="/tabs/perfilEntrega/{{e.key}}">
         <ion-avatar slot="start">
           <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
         </ion-avatar>

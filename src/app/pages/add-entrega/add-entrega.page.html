@@ -6,10 +6,18 @@
 
 <ion-content>
   <form #fc="ngForm" (ngSubmit)="onsubmit(fc)">
-    <ion-item lines="none">
-          <img src="assets/perfil.jpg" (click)="tirarFoto()" *ngIf="!preview">
-          <img [src]="preview" (click)="tirarFoto()" *ngIf="preview">
+
+    <ion-item lines="none">   
+      <img src="assets/perfil.jpg" (click)="tirarFoto()" *ngIf="!preview">
+      <img [src]="preview" (click)="tirarFoto()" *ngIf="preview">
     </ion-item>
+
+    <ion-slides pager="true" [options]="slideOpts">
+        <ion-slide *ngFor="let f of preview">
+            <img src="{{f}}">
+        </ion-slide>
+      </ion-slides>
+
     <ion-item>
       <ion-label position="floating">Produto</ion-label>
       <ion-input type="text" [(ngModel)]="entrega.produto" name="produto" required></ion-input>
@@ -54,5 +62,6 @@
       <ion-button type="submit" [disabled]="fc.invalid">Salvar</ion-button>
       <ion-button type="reset" color="danger" [routerLink]="['/']">Cancelar</ion-button>
     </ion-item>
+    
   </form>
 </ion-content>
