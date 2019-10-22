@@ -14,9 +14,11 @@ export class AddEntregaPage implements OnInit {
 
   protected entrega: Entrega = new Entrega;
   protected id: string = null;
-  protected preview: string [];
+  protected preview: string [] = null;
+  
   protected slideOpts = {
     initialSlide: 1,
+    slidesPerView: 3,
     speed: 400
   };
 
@@ -105,4 +107,28 @@ export class AddEntregaPage implements OnInit {
       // Handle error
     });
 }
+  async removerFoto(index) {
+    const alert = await this.alertController.create({
+      header: 'Confirma Remoção!',
+      message: 'Deseja remover a foto?',
+      buttons: [
+        {
+          text: 'Não',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+        //console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Sim',
+          handler: () => {
+        //console.log('Confirm Okay');
+        this.preview.splice(index,1)
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
 }
