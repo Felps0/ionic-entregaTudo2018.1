@@ -4,6 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
   <ion-item lines="none">
     <img src="assets/perfil.jpg" (click)="tirarFoto()" *ngIf="!preview">
@@ -43,4 +44,8 @@
       <ion-button type="reset" color="danger" [routerLink]="['/']">Cancelar</ion-button>
     </ion-item>
   </form>
+  
+  <div id="map_canvas"></div>  
 </ion-content>
+
+
