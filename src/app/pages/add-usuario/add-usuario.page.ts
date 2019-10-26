@@ -41,7 +41,7 @@ export class AddUsuarioPage implements OnInit {
 
   ngOnInit() {
     this.localAtual()
-    this.loadMap();
+    //this.loadMap();
   }
 
   //função chamada toda vez que a pagina recebe foco;
@@ -107,6 +107,8 @@ export class AddUsuarioPage implements OnInit {
     this.geolocation.getCurrentPosition().then((resp) => {
       this.usuario.lat = resp.coords.latitude
       this.usuario.lng = resp.coords.longitude
+      this.loadMap()
+      
     }).catch((error) => {
       console.log('Error getting location', error);
     });
@@ -135,8 +137,8 @@ export class AddUsuarioPage implements OnInit {
     let mapOptions: GoogleMapOptions = {
       camera: {
          target: {
-           lat:  -22.9035,
-           lng: -43.2096
+           lat:  this.usuario.lat,
+           lng:  this.usuario.lng
          },
          zoom: 18,
          tilt: 30
@@ -147,16 +149,28 @@ export class AddUsuarioPage implements OnInit {
 
     let marker: Marker = this.map.addMarkerSync({
       title: 'Ionic',
-      icon: 'blue',
+      icon: 'red',
       animation: 'DROP',
       position: {
-        lat: -22.9035,
-        lng: -43.2096
+        lat: this.usuario.lat,
+        lng:  this.usuario.lng
       }
     });
     marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
       alert('clicked');
+      
     });
+
+    this.map.on(GoogleMapsEvent.MAP_CLICK).subscribe(
+      res=>{
+        console.log(res);
+          marker.setPosition(res[0]);
+          this.usuario.lat = res [0].let;
+          this.usuario.lng = res [0].lng;
+      }
+    )
+
   }
+  
 
 }
